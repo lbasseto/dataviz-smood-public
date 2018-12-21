@@ -9,7 +9,7 @@ import {
   SELECTED_PATH_COLOR,
   SELECTED_PATH_WIDTH,
   SLIDER_WIDTH
-} from "dataviz-smood-public/js/constants.js";
+} from "/dataviz-smood-public/js/constants.js";
 
 function mercatorX(lon) {
   return lon * Math.PI / 180;
