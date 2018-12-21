@@ -37,6 +37,7 @@
 #viz{
   width: 100%;
   height: 50%;
+  float:left;
   background-color: transparent;
 }
 
@@ -57,26 +58,27 @@
 #map_container{
   width: 45%;
   height: 100%;
+  float:left;
   position: relative;
-  /*float:left;*/
+
   align-content: center;
 }
 
 #background_map{
     position: relative;
-    left: 275px;
+    /*height: auto;*/
+    width: 45%;
+    height: 600px;
+}
+
+
+#main_svg {
+    position: absolute;
     width: 45%;
     height: 100%;
+    align-content: center;
+    background-color: transparent;
 }
-
-#main_svg{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  align-content: center;
-  background-color: transparent;
-}
-
 #donut_time{
   display: block;
 }
