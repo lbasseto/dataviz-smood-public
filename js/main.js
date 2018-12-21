@@ -56,9 +56,8 @@ whenDocumentLoaded(() => {
 
   let data2Path = "../data/times_group.csv";
   let dataPath_communes = "../data/communes_group.csv";
-  let dataPath_dist = "../data/dist_group.csv";
-  let dataPath_pickup = "../data/pickup_sum.csv";
-  let dataPath_region = "../data/com_sum.csv";
+  let dataPath_pickup = "../data/pickup_counts_per_time.csv";
+  let dataPath_region = "../data/dregions_counts_per_time.csv";
 
   function row2(d) {
     return {
@@ -70,19 +69,16 @@ whenDocumentLoaded(() => {
 
   let data2 = [];
   let data_communes = [];
-  let data_dist = [];
   d3.csv(data2Path, function(d) {
     data2.push(row2(d));        });
   d3.csv(dataPath_communes, function(d) {
     data_communes.push(row2(d));     });
-  d3.csv(dataPath_dist, function(d) {
-    data_dist.push(row2(d));     });
 
   // **** Bar Charts Data ****
-  function row_bar(d, x,y ,str) {
+  function row_bar(d, x,y ) {
     return {
       id: d.id,
-      time:str+ d[x],
+      time: d[x],
       count: d[y] //,
       //pickup: d.pickup//,
       //res: d
@@ -91,10 +87,10 @@ whenDocumentLoaded(() => {
   let pickup_time_data = [];
   let region_time_data = [];
   d3.csv(dataPath_pickup, function(d) {
-    pickup_time_data.push(row_bar(d, 'id','count','Pickup: ')); //'pickup'
+    pickup_time_data.push(row_bar(d, 'id','18:30')); //'pickup'
   });
   d3.csv(dataPath_region, function(d) {
-    region_time_data.push(row_bar(d, 'dregions','count',''));
+    region_time_data.push(row_bar(d, 'dregions','18:30'));
   });
 
   let nodesPath = "../data/nodes_usage_delivery_ids.csv";
@@ -143,30 +139,32 @@ whenDocumentLoaded(() => {
     let donut = new DonutChart("donut_svg", data2, donut_width, donut_height,'#FFC0CB','deliveries',0, 219);
     let donut2 = new DonutChart("donut_svg2", data_communes, donut_width, donut_height,'#98FB98','communes',0, 15);
     let donut3 = new DonutChart("donut_svg3", data2, donut_width, donut_height,'#ffc65c','deliveries',1, 2000);
-    let donut4 = new DonutChart("donut_svg4", data_dist, donut_width, donut_height,'#d48dd4','m distance',1, 8941130 );
+    let donut4 = new DonutChart("donut_svg4", data_communes, donut_width, donut_height,'#d48dd4','communes',1, 15 );
 
     let plot = new MapPlot("main_svg", data, 600, 600, bounds, nodes, margin);
 
     //let graph = new GraphPlot("graph_svg", data, 1000, 1000, bounds, nodes);
     console.log('pickup data',pickup_time_data);
-    let bar_pickup = new BarChart("barchart_svg", pickup_time_data, 400, 300);
-    let barc_delivery = new BarChart("barchart_svg2", region_time_data, 400, 300);
-    let barc_time = new BarChartTime("barchart_time_svg", data2, 400, 400);
+    let bar_pickup = new BarChart2("barchart_svg", pickup_time_data, 450, 300);
 
-    // For collapsible side panels
-    var collapsible = document.getElementsByClassName("collapsible");
-    var i;
-    for (i = 0; i < collapsible.length; i++) {
-      collapsible[i].addEventListener("click", function() {
-          this.classList.toggle("active");
-          var content = this.nextElementSibling;
-          if (content.style.maxHeight){
-            content.style.maxHeight = null;
-          } else {
-            content.style.maxHeight = content.scrollHeight + "px";
-          }
-      });
-    }
+    let barc_delivery = new BarChart("barchart_svg2", region_time_data, 450, 300);
+    let barc_time = new BarChartTime("barchart_time_svg", data2, 450, 400);
+  //  let barc_both = new BarChartBoth("barchart_both_svg", data2, 400, 400);
+
+  var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+coll[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var content = this.nextElementSibling;
+  if (content.style.maxHeight){
+    content.style.maxHeight = null;
+  } else {
+    content.style.maxHeight = content.scrollHeight + "px";
+  }
+});
+}
 
 
   });
