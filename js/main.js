@@ -24,7 +24,7 @@ function sleep(ms) {
 whenDocumentLoaded(() => {
   //let dataPath = "../data/dataviz_filtered_coords_N100.csv";
   //let dataPath = "../data/dataviz_processed.csv";
-  let dataPath = "/data/dataviz_processed.csv";
+  let dataPath = "../data/dataviz_processed.csv";
 
   let timeParse = d3.timeParse("%H:%M:%S");
 
@@ -54,11 +54,11 @@ whenDocumentLoaded(() => {
     //
   });
 
-  let data2Path = "/data/times_group.csv";
-  let dataPath_communes = "/data/communes_group.csv";
-  let dataPath_dist = "/data/dist_group.csv";
-  let dataPath_pickup = "/data/pickup_sum.csv";
-  let dataPath_region = "/data/com_sum.csv";
+  let data2Path = "../data/times_group.csv";
+  let dataPath_communes = "../data/communes_group.csv";
+  let dataPath_dist = "../data/dist_group.csv";
+  let dataPath_pickup = "../data/pickup_sum.csv";
+  let dataPath_region = "../data/com_sum.csv";
 
   function row2(d) {
     return {
