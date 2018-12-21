@@ -3,10 +3,6 @@ import MapPlot from "./map.js";
 import GraphPlot from "./graph.js";
 import BarChart from "./barchart.js";
 import BarChartTime from "./barchart_time.js";
-import BarChart2 from "./barchart2.js";
-import BarChartBoth from "./barchart_both.js";
-
-//import Title from "./title.js";
 
 function whenDocumentLoaded(action) {
   if (document.readyState === "loading") {
@@ -22,8 +18,6 @@ function sleep(ms) {
 }
 
 whenDocumentLoaded(() => {
-  //let dataPath = "../data/dataviz_filtered_coords_N100.csv";
-  //let dataPath = "../data/dataviz_processed.csv";
   let dataPath = "data/dataviz_processed.csv";
 
   let timeParse = d3.timeParse("%H:%M:%S");
@@ -48,11 +42,8 @@ whenDocumentLoaded(() => {
   }
 
   let data = [];
-  //let plot = new GraphPlot("main_svg", 500, 500);
   d3.csv(dataPath, function(d) {
     data.push(row(d));
-    //data = d.map(row)
-    //
   });
 
   let data2Path = "data/times_group.csv";
@@ -90,14 +81,13 @@ whenDocumentLoaded(() => {
   let pickup_time_data = [];
   let region_time_data = [];
   d3.csv(dataPath_pickup, function(d) {
-    pickup_time_data.push(row_bar(d, 'id','count','Pickup: ')); //'pickup'
+    pickup_time_data.push(row_bar(d, 'id','count','Pickup: '));
   });
   d3.csv(dataPath_region, function(d) {
     region_time_data.push(row_bar(d, 'dregions','count',''));
   });
 
   let nodesPath = "data/nodes_usage_delivery_ids.csv";
-  //let nodesPath = "../data/nodes_usage_delivery_filtered_N100.csv";
 
   function node(n) {
     return {
@@ -145,29 +135,27 @@ whenDocumentLoaded(() => {
     let donut4 = new DonutChart("donut_svg4", data_dist, donut_width, donut_height,'#d48dd4','m distance',1, 8941130 );
 
     let plot = new MapPlot("main_svg", data, 600, 600, bounds, nodes, margin);
-
     //let graph = new GraphPlot("graph_svg", data, 1000, 1000, bounds, nodes);
+
     console.log('pickup data',pickup_time_data);
     let bar_pickup = new BarChart("barchart_svg", pickup_time_data, 350, 300);
     let barc_delivery = new BarChart("barchart_svg2", region_time_data, 350, 300);
     let barc_time = new BarChartTime("barchart_time_svg", data2, 350, 400);
-  //  let barc_both = new BarChartBoth("barchart_both_svg", data2, 400, 400);
 
   var coll = document.getElementsByClassName("collapsible");
-var i;
+  var i;
 
-for (i = 0; i < coll.length; i++) {
-coll[i].addEventListener("click", function() {
-  this.classList.toggle("active");
-  var content = this.nextElementSibling;
-  if (content.style.maxHeight){
-    content.style.maxHeight = null;
-  } else {
-    content.style.maxHeight = content.scrollHeight + "px";
+  for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
   }
-});
-}
-
 
   });
 });

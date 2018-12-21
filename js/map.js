@@ -40,8 +40,6 @@ export default class MapPlot {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(lausanne_background);
 
-
-
     //this.nodes = nodes;
     this.wholeData = data;
     this.currentData = data;
@@ -66,7 +64,6 @@ export default class MapPlot {
     this.addDeliveryPoints(data);
 
     // slider functionality
-
     //    <input type="range" name="slider" id="slider" min="0" max="100" width="500">
     //    <input type="text" name="slider_val" size="3" id="slider_val">
 
@@ -103,9 +100,6 @@ export default class MapPlot {
         //self.sliderVal.text(date.toString());
         self.updateCars(self.currentData, date);
       });
-
-    // beta
-    //this.addNodes(nodes);
   }
 
   // helper to create a unique key for a point
@@ -155,7 +149,6 @@ export default class MapPlot {
       lat: d.lat,
       lon: d.lon,
       radius: Math.sqrt(d.count)
-      //radius: Math.log(d.count)
     }));
 
     console.log(pData);
@@ -306,85 +299,5 @@ export default class MapPlot {
       .domain([bounds.minY, bounds.maxY])
       .range([this.height, 0]);
 
-    // TODO continue that
   }
-
-  /*
-OLD
-
-  getX(lon) {
-    return (
-      (lon - this.bounds.minX) /
-      (this.bounds.maxX - this.bounds.minX) *
-      this.width
-    );
-  }
-
-  getY(lat) {
-    return (
-      (this.bounds.maxY - lat) /
-      (this.bounds.maxY - this.bounds.minY) *
-      this.height
-    );
-  }
-  */
-
-  /*
-
-  /////////// OLD VERSION ////////////
-  addEdges(edges) {
-    this.svg
-      .selectAll("line")
-      .data(edges)
-      .enter()
-      .append("line")
-      .attr("x1", d => this.getX(edges.lon1))
-      .attr("y1", d => this.getY(edges.lat1))
-      .attr("x2", d => this.getX(edges.lon2))
-      .attr("y2", d => this.getY(edges.lat2))
-      .style("stroke", d => d.color)
-      .style("stroke-width", d => d.width);
-  }
-
-  getEdges(route) {
-    let r = route;
-
-    if (r.length <= 1) {
-      return [];
-    }
-    let res = [];
-
-    let previous = null;
-    for (let i = 0; i < r.length; ++i) {
-      //  console.log(route[i]);
-
-      let current = r[i].split("/");
-      if (i > 0) {
-        //  console.log(arr);
-        res.push({
-          lat1: previous[0],
-          lon1: previous[1],
-          lat2: current[0],
-          lon2: current[1],
-          color: PATH_COLOR,
-          width: PATH_WIDTH
-        });
-      }
-
-      previous = current;
-    }
-    return res;
-  }
-
-  addRoutes(data) {
-    let edges = data.flatMap(d => this.getEdges(d.road));
-
-    this.addEdges(edges);
-
-    //data.map(d => this.getEdges(d.road)).forEach(edges => this.addEdges(edges));
-  }
-  /////////// OLD VERSION ////////////
-
-
-*/
 }
