@@ -9,7 +9,7 @@ import {
   SELECTED_PATH_COLOR,
   SELECTED_PATH_WIDTH,
   SLIDER_WIDTH
-} from "./constants.js";
+} from "dataviz-smood-public/js/constants.js";
 
 function mercatorX(lon) {
   return lon * Math.PI / 180;
@@ -33,6 +33,14 @@ export default class MapPlot {
     this.deliveries = this.svg.append("g").attr("id", "deliveries");
     this.cars = this.svg.append("g").attr("id", "cars");
     this.paths = this.svg.append("g").attr("id", "paths");
+      
+    // add the background map
+    var lausanne_background = L.map('background_map').setView([46.5197, 6.6323], 13); 
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(lausanne_background);
+      
+      
 
     //this.nodes = nodes;
     this.wholeData = data;

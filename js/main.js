@@ -54,10 +54,10 @@ whenDocumentLoaded(() => {
     //
   });
 
-  let data2Path = "../data/times_group.csv";
-  let dataPath_communes = "../data/communes_group.csv";
-  let dataPath_pickup = "../data/pickup_counts_per_time.csv";
-  let dataPath_region = "../data/dregions_counts_per_time.csv";
+  let data2Path = "dataviz-smood-public/data/times_group.csv";
+  let dataPath_communes = "dataviz-smood-public/data/communes_group.csv";
+  let dataPath_pickup = "dataviz-smood-public/data/pickup_counts_per_time.csv";
+  let dataPath_region = "dataviz-smood-public/data/dregions_counts_per_time.csv";
 
   function row2(d) {
     return {
@@ -93,7 +93,7 @@ whenDocumentLoaded(() => {
     region_time_data.push(row_bar(d, 'dregions','18:30'));
   });
 
-  let nodesPath = "../data/nodes_usage_delivery_ids.csv";
+  let nodesPath = "dataviz-smood-public/data/nodes_usage_delivery_ids.csv";
   //let nodesPath = "../data/nodes_usage_delivery_filtered_N100.csv";
 
   function node(n) {
