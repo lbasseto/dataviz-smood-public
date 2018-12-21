@@ -35,7 +35,7 @@ export default class MapPlot {
     this.paths = this.svg.append("g").attr("id", "paths");
       
     // add the background map
-    var lausanne_background = L.map('background_map').setView([46.524992, 6.630330], 13); 
+    var lausanne_background = L.map('background_map').setView([46.538411, 6.632725], 13); 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(lausanne_background);
