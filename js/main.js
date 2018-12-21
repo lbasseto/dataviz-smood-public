@@ -51,6 +51,7 @@ whenDocumentLoaded(() => {
   //let plot = new GraphPlot("main_svg", 500, 500);
   d3.csv(dataPath, function(d) {
     data.push(row(d));
+    //data = d.map(row)
     //
   });
 
