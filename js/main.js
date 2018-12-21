@@ -81,21 +81,19 @@ whenDocumentLoaded(() => {
 
   // **** Bar Charts Data ****
   function row_bar(d, x,y ,str) {
-    return {
-      id: d.id,
-      time: d[x],
-      count: str+d[y] //,
-      //pickup: d.pickup//,
-      //res: d
-    };
-  }
+      return {
+        id: d.id,
+        time:str+ d[x],
+        count: d[y] 
+      };
+    }
   let pickup_time_data = [];
   let region_time_data = [];
   d3.csv(dataPath_pickup, function(d) {
-    pickup_time_data.push(row_bar(d, 'id','count','')); //'pickup'
+    pickup_time_data.push(row_bar(d, 'id','count','Pickup: ')); //'pickup'
   });
   d3.csv(dataPath_region, function(d) {
-    region_time_data.push(row_bar(d, 'dregions','count','Pickup id: '));
+    region_time_data.push(row_bar(d, 'dregions','count',''));
   });
 
   let nodesPath = "data/nodes_usage_delivery_ids.csv";
@@ -150,10 +148,9 @@ whenDocumentLoaded(() => {
 
     //let graph = new GraphPlot("graph_svg", data, 1000, 1000, bounds, nodes);
     console.log('pickup data',pickup_time_data);
-    let bar_pickup = new BarChart2("barchart_svg", pickup_time_data, 450, 300);
-
-    let barc_delivery = new BarChart("barchart_svg2", region_time_data, 450, 300);
-    let barc_time = new BarChartTime("barchart_time_svg", data2, 450, 400);
+    let bar_pickup = new BarChart("barchart_svg", pickup_time_data, 400, 300);
+    let barc_delivery = new BarChart("barchart_svg2", region_time_data, 400, 300);
+    let barc_time = new BarChartTime("barchart_time_svg", data2, 400, 400);
   //  let barc_both = new BarChartBoth("barchart_both_svg", data2, 400, 400);
 
   var coll = document.getElementsByClassName("collapsible");
