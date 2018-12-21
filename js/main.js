@@ -24,7 +24,7 @@ function sleep(ms) {
 whenDocumentLoaded(() => {
   //let dataPath = "../data/dataviz_filtered_coords_N100.csv";
   //let dataPath = "../data/dataviz_processed.csv";
-  let dataPath = "../data/dataviz_processed.csv";
+  let dataPath = "/data/dataviz_processed.csv";
 
   let timeParse = d3.timeParse("%H:%M:%S");
 
@@ -54,11 +54,11 @@ whenDocumentLoaded(() => {
     //
   });
 
-  let data2Path = "../data/times_group.csv";
-  let dataPath_communes = "../data/communes_group.csv";
-  let dataPath_dist = "../data/dist_group.csv";
-  let dataPath_pickup = "../data/pickup_sum.csv";
-  let dataPath_region = "../data/com_sum.csv";
+  let data2Path = "/data/times_group.csv";
+  let dataPath_communes = "/data/communes_group.csv";
+  let dataPath_dist = "/data/dist_group.csv";
+  let dataPath_pickup = "/data/pickup_sum.csv";
+  let dataPath_region = "/data/com_sum.csv";
 
   function row2(d) {
     return {
@@ -138,13 +138,13 @@ whenDocumentLoaded(() => {
     console.log(bounds);
     var donut_height = 250,
         donut_width = 250;
- /*
+
     let donut_time = new DonutChart("donut_time", data2, donut_width, donut_height,'#B0E0E6','', -1, 48);
     let donut = new DonutChart("donut_svg", data2, donut_width, donut_height,'#FFC0CB','deliveries',0, 219);
     let donut2 = new DonutChart("donut_svg2", data_communes, donut_width, donut_height,'#98FB98','communes',0, 15);
     let donut3 = new DonutChart("donut_svg3", data2, donut_width, donut_height,'#ffc65c','deliveries',1, 2000);
     let donut4 = new DonutChart("donut_svg4", data_dist, donut_width, donut_height,'#d48dd4','m distance',1, 8941130 );
-*/
+
     let plot = new MapPlot("main_svg", data, 600, 600, bounds, nodes, margin);
 
     //let graph = new GraphPlot("graph_svg", data, 1000, 1000, bounds, nodes);
