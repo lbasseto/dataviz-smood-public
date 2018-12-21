@@ -57,8 +57,8 @@ whenDocumentLoaded(() => {
 
   let data2Path = "data/times_group.csv";
   let dataPath_communes = "data/communes_group.csv";
-  let dataPath_pickup = "data/pickup_counts_per_time.csv";
-  let dataPath_region = "data/dregions_counts_per_time.csv";
+  let dataPath_pickup = "data/pickup_sum.csv";
+  let dataPath_region = "data/com_sum.csv";
 
   function row2(d) {
     return {
@@ -76,11 +76,11 @@ whenDocumentLoaded(() => {
     data_communes.push(row2(d));     });
 
   // **** Bar Charts Data ****
-  function row_bar(d, x,y ) {
+  function row_bar(d, x,y ,str) {
     return {
       id: d.id,
       time: d[x],
-      count: d[y] //,
+      count: str+d[y] //,
       //pickup: d.pickup//,
       //res: d
     };
@@ -88,10 +88,10 @@ whenDocumentLoaded(() => {
   let pickup_time_data = [];
   let region_time_data = [];
   d3.csv(dataPath_pickup, function(d) {
-    pickup_time_data.push(row_bar(d, 'id','18:30')); //'pickup'
+    pickup_time_data.push(row_bar(d, 'id','count','')); //'pickup'
   });
   d3.csv(dataPath_region, function(d) {
-    region_time_data.push(row_bar(d, 'dregions','18:30'));
+    region_time_data.push(row_bar(d, 'dregions','count','Pickup id: '));
   });
 
   let nodesPath = "data/nodes_usage_delivery_ids.csv";
