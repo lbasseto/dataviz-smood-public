@@ -60,27 +60,22 @@
   height: 100%;
   float:left;
   position: relative;
-
   align-content: center;
 }
 
 #background_map{
     position: absolute;
-    /*height: auto;*/
-    width: 45%;
+    width: 100%;
     height: 600px;
-    left:20%;
 }
 
 
 #main_svg {
-    position: absolute;
-    width: 45%;
+    position: relative;
+    width: 100%;
     height: 100%;
     align-content: center;
     background-color: transparent;
-    left: 25%;
-    top: 50;
 }
 #donut_time{
   display: block;
