@@ -148,9 +148,9 @@ whenDocumentLoaded(() => {
 
     //let graph = new GraphPlot("graph_svg", data, 1000, 1000, bounds, nodes);
     console.log('pickup data',pickup_time_data);
-    let bar_pickup = new BarChart("barchart_svg", pickup_time_data, 300, 300);
-    let barc_delivery = new BarChart("barchart_svg2", region_time_data, 300, 300);
-    let barc_time = new BarChartTime("barchart_time_svg", data2, 300, 400);
+    let bar_pickup = new BarChart("barchart_svg", pickup_time_data, 350, 300);
+    let barc_delivery = new BarChart("barchart_svg2", region_time_data, 350, 300);
+    let barc_time = new BarChartTime("barchart_time_svg", data2, 350, 400);
   //  let barc_both = new BarChartBoth("barchart_both_svg", data2, 400, 400);
 
   var coll = document.getElementsByClassName("collapsible");
