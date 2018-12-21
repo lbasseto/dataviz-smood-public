@@ -1,13 +1,75 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Smood Visualisation</title>
-  <link rel="stylesheet" href="css/main.css">
+    <meta charset="utf-8">
+    <title>Smood Visualisation</title>
 
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+
+    <script src="lib/d3.min.js"></script>
+    <script src="lib/kmeans.min.js"></script>
+    <script type="module" src="js/main.js"></script>
 </head>
+
 <body>
-    <h1>Hello!</h1>
+
+ <div>
+   <!--<div id='header'>
+      <img id='backimg' src='../img/del.jpg' width=100%>
+      <h1> A Day of Food Delivery  in Lausanne</h1>
+    </div> -->
+    <div id='header'>
+      <div id='head2' style="z-index: 20;"> <h1>A Day of Food Delivery <br> in Lausanne </h1></div>
+      <div id="backimg" style="z-index: 10; "><img alt="" src='../img/food3.jpeg' width=100% /></div>
+
+    </div>
+    <div id='viz'>
+        <div id='container' style="align:left">
+            <button class="collapsible">Time</button>
+            <div class="content">
+                <svg id="donut_time"  style="align:center">  </svg>
+            </div>
+            <button class="collapsible"> Current </button>
+            <div class="content">
+                <svg id="donut_svg" >  </svg>
+                <svg id="donut_svg2" > </svg>
+            </div>
+            <button class="collapsible"> Total </button>
+            <div class="content">
+              <svg id="donut_svg3" > </svg>
+              <svg id="donut_svg4" > </svg>
+            </div>
+        </div>
+         <svg id="main_svg" style="align:center">    </svg>
+
+
+          <div id='container2' style="align:left">
+              <button class="collapsible">Pickup Point Distributions </button>
+              <div class="content">
+                <svg id="barchart_svg">       </svg>
+              </div>
+              <button class="collapsible"> Delivery Distributions (Communes) </button>
+              <div class="content">
+                <svg id="barchart_svg2">       </svg>
+              </div>
+              <button class="collapsible"> Overall Total Delivery per Time </button>
+              <div class="content">
+                <svg id="barchart_time_svg">  </svg>
+              </div>
+          </div>
+
+      </div>
+   </div>
+
+   <!--
+       <svg id="barchart_svg">       </svg>
+       <svg id="barchart_time_svg">  </svg>
+       <svg id="graph_svg">          </svg> -->
+
+
+<!-- <svg id="barchart_both_svg">  </svg>  <input type="range" id="slider" min="0" max="720" width="500">-->
+
 </body>
 </html>
-
