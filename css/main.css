@@ -65,10 +65,11 @@
 }
 
 #background_map{
-    position: relative;
+    position: absolute;
     /*height: auto;*/
     width: 45%;
     height: 600px;
+    left:20%;
 }
 
 
@@ -78,6 +79,8 @@
     height: 100%;
     align-content: center;
     background-color: transparent;
+    left: 25%;
+    top: 50;
 }
 #donut_time{
   display: block;
