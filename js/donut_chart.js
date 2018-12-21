@@ -83,7 +83,6 @@ createDonut(data, color,textType, tot, max) {
         }else if(tot == 0){
           // percentage based on max delivery done in a 15 interval
           datares_std = (datares*100)/max;
-          //text= datares.toString();
         }else{  // show time  tot is -1
           datares = dataset[counter].time;
           datares_std =  (counter*100)/max;

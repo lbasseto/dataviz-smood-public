@@ -1,12 +1,12 @@
 export default class BarChart {
   constructor(svg_id, data, width, height) {
-    this.margin = 30
+    this.margin = 40
     this.width = width;
     this.height = height;
     this.svg = d3
       .select("#" + svg_id)
       .attr("width", width+100)
-      .attr("height", height+160);
+      .attr("height", height+180);
 
     this.wholeData = data;
     console.log(this.wholeData);
