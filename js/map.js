@@ -33,14 +33,14 @@ export default class MapPlot {
     this.deliveries = this.svg.append("g").attr("id", "deliveries");
     this.cars = this.svg.append("g").attr("id", "cars");
     this.paths = this.svg.append("g").attr("id", "paths");
-      
+
     // add the background map
-    var lausanne_background = L.map('background_map').setView([46.538411, 6.632725], 13); 
+    var lausanne_background = L.map('background_map').setView([46.538411, 6.632725], 13);
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(lausanne_background);
-      
-      
+
+
 
     //this.nodes = nodes;
     this.wholeData = data;
@@ -100,7 +100,7 @@ export default class MapPlot {
 
         let date = new Date(minTime + percent * (maxTime - minTime));
 
-        self.sliderVal.text(date.toString());
+        //self.sliderVal.text(date.toString());
         self.updateCars(self.currentData, date);
       });
 
