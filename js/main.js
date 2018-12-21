@@ -59,6 +59,7 @@ whenDocumentLoaded(() => {
   let dataPath_communes = "data/communes_group.csv";
   let dataPath_pickup = "data/pickup_sum.csv";
   let dataPath_region = "data/com_sum.csv";
+  let dataPath_dist = "data/dist_group.csv";
 
   function row2(d) {
     return {
@@ -70,10 +71,13 @@ whenDocumentLoaded(() => {
 
   let data2 = [];
   let data_communes = [];
+  let data_dist = [];
   d3.csv(data2Path, function(d) {
     data2.push(row2(d));        });
   d3.csv(dataPath_communes, function(d) {
     data_communes.push(row2(d));     });
+  d3.csv(dataPath_dist, function(d) {
+    data_dist.push(row2(d));     });
 
   // **** Bar Charts Data ****
   function row_bar(d, x,y ,str) {
@@ -140,7 +144,7 @@ whenDocumentLoaded(() => {
     let donut = new DonutChart("donut_svg", data2, donut_width, donut_height,'#FFC0CB','deliveries',0, 219);
     let donut2 = new DonutChart("donut_svg2", data_communes, donut_width, donut_height,'#98FB98','communes',0, 15);
     let donut3 = new DonutChart("donut_svg3", data2, donut_width, donut_height,'#ffc65c','deliveries',1, 2000);
-    let donut4 = new DonutChart("donut_svg4", data_communes, donut_width, donut_height,'#d48dd4','communes',1, 15 );
+    let donut4 = new DonutChart("donut_svg4", data_dist, donut_width, donut_height,'#d48dd4','m distance',1, 8941130 );
 
     let plot = new MapPlot("main_svg", data, 600, 600, bounds, nodes, margin);
 
